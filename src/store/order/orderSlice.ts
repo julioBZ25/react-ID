@@ -27,15 +27,29 @@ export const orderSlice = createSlice({
       const order = state.orders.find((order) => order.id === action.payload);
       if (!order) return;
       order.complete = true;
-      state.sortBy = [...state.orders];
+      if (state.orders.length === state.sortBy.length) {
+        state.sortBy = [...state.orders];
+      } else {
+        const restOrders = state.sortBy.filter(
+          (order) => order.id !== action.payload
+        );
+        state.sortBy = [...restOrders];
+      }
     },
     cancelOrder: (state, action: PayloadAction<string>) => {
       const orders = state.orders.filter(
         (order) => order.id !== action.payload
       );
       if (orders.length === 0) return;
-      state.orders = orders;
-      state.sortBy = [...state.orders];
+      state.orders = [...orders];
+      if (state.orders.length === state.sortBy.length) {
+        state.sortBy = [...state.orders];
+      } else {
+        const restOrders = state.sortBy.filter(
+          (order) => order.id !== action.payload
+        );
+        state.sortBy = [...restOrders];
+      }
     },
     sortByOrders: (state, action: PayloadAction<boolean>) => {
       const orders = state.orders.filter(
