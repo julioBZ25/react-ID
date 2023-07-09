@@ -72,6 +72,7 @@ const ActionButton = styled.button<{ $type: string }>`
   border: none;
   padding: 0.5rem;
   cursor: pointer;
+  font-weight: bold;
   background-color: ${(props) => {
     return props.$type === "complete" ? "#00CC66" : "#FF6B6B";
   }};
