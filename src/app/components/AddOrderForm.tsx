@@ -62,9 +62,10 @@ const ActionButton = styled.button`
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  background-color: yellow;
+  font-weight: bold;
+  background-color: #00CC66;
   &:hover {
-    background-color: yellow;
+    background-color: #008000;
   }
 `;
 
